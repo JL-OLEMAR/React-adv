@@ -1,5 +1,5 @@
 export function LazyPage2() {
-  return <h1>LazyPage2</h1>
+  return <h3>LazyPage2</h3>
 }
 
 export default LazyPage2

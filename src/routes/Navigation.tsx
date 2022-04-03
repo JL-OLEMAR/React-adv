@@ -21,7 +21,7 @@ export const Navigation = () => {
             <ul>
               {routes.map(({ path, name }) => (
                 <li key={path}>
-                  <NavLink exact activeClassName='nav-active' to={path}>
+                  <NavLink activeClassName='nav-active' to={path}>
                     {name}
                   </NavLink>
                 </li>
@@ -32,7 +32,7 @@ export const Navigation = () => {
           {/* A <Switch> looks through its children <Route>s and
               renders the first one that matches the current URL. */}
           <Switch>
-            {routes.map(({ path, component: Component }) => (
+            {routes.map(({ path, Component }) => (
               <Route key={path} path={path} render={() => <Component />} />
             ))}
 
