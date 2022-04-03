@@ -42,12 +42,12 @@ nav li {
 }
 
 nav li a {
-  color: white;
+  color: gray;
   font-size: 1.2rem;
   text-decoration: none;
 }
 
 .nav-active {
-  color: grey;
+  color: #fff;
   transition: all .3s ease-out;
 }
