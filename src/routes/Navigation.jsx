@@ -1,46 +1,51 @@
-import { Suspense } from 'react'
 import {
-  BrowserRouter,
-  Navigate,
-  NavLink,
+  BrowserRouter as Router,
+  Switch,
   Route,
-  Routes
+  NavLink
 } from 'react-router-dom'
 
 import logo from '../logo.svg'
 
-import { routes } from './routes.ts'
-
-export function Navigation() {
+export const Navigation = () => {
   return (
-    <Suspense fallback={<span>Loading...</span>}>
-      <BrowserRouter>
-        <div className='main-layout'>
-          <nav>
-            <img alt='React logo' src={logo} />
+    <Router>
+      <div className='main-layout'>
+        <nav>
+          <img alt='React Logo' src={logo} />
+          <ul>
+            <li>
+              <NavLink exact activeClassName='nav-active' to='/'>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact activeClassName='nav-active' to='/about'>
+                About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink exact activeClassName='nav-active' to='/users'>
+                Users
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
 
-            <ul>
-              {routes.map(({ name, to }) => (
-                <li key={name}>
-                  <NavLink
-                    className={({ isActive }) => (isActive ? 'nav-active' : '')}
-                    to={to}
-                  >
-                    {name}
-                  </NavLink>
-                </li>
-              ))}
-            </ul>
-          </nav>
-
-          <Routes>
-            {routes.map(({ name, path, Component }) => (
-              <Route key={name} element={<Component />} path={path} />
-            ))}
-            <Route element={<Navigate replace to={routes[0].to} />} path='/*' />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </Suspense>
+        {/* A <Switch> looks through its children <Route>s and
+            renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path='/about'>
+            <h1>About</h1>
+          </Route>
+          <Route path='/users'>
+            <h1>Users</h1>
+          </Route>
+          <Route path='/'>
+            <h1>Home</h1>
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   )
 }
