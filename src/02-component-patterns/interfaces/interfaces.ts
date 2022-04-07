@@ -1,24 +1,43 @@
-import { ReactElement } from 'react'
-
 export interface Product {
   id: string
   title: string
   img?: string
 }
-export interface ProductCardProps {
-  product: Product
-  children?: ReactElement | ReactElement[]
-}
 
 export interface ProductContextProps {
   counter: number
-  increaseBy: (value: number) => void
   product: Product
+  increaseBy: (value: number) => void
 }
 
+export interface ProductCardProps {
+  product: Product
+  children?: React.ReactElement | React.ReactElement[]
+  className?: string
+  style?: React.CSSProperties
+}
+
+export interface ProductTitleProps {
+  className?: string
+  title?: string
+  style?: React.CSSProperties
+}
+
+export interface ProductImageProps {
+  className?: string
+  img?: string
+  style?: React.CSSProperties
+}
+
+export interface ProductButtonsProps {
+  className?: string
+  style?: React.CSSProperties
+}
+
+// Props or props destructuring (is the same)
 export interface ProductCardHOCProps {
-  ({ children, product }: ProductCardProps): JSX.Element
-  Title: ({ title }: { title?: string }) => JSX.Element
-  Image: ({ img }: { img?: string }) => JSX.Element
-  Buttons: () => JSX.Element
+  ({ children, product, className, style }: ProductCardProps): JSX.Element
+  Buttons: (Props: ProductButtonsProps) => JSX.Element
+  Image: ({ img, className, style }: ProductImageProps) => JSX.Element
+  Title: (Props: ProductTitleProps) => JSX.Element
 }

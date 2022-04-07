@@ -1,8 +1,8 @@
 import {
   BrowserRouter as Router,
-  Switch,
+  NavLink,
   Route,
-  NavLink
+  Switch
 } from 'react-router-dom'
 
 import { ShoppingPage } from '../02-component-patterns/pages/ShoppingPage.tsx'

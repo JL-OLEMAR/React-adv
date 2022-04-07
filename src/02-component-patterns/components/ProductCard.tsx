@@ -9,12 +9,19 @@ export const ProductContext = createContext({} as ProductContextProps)
 const { Provider } = ProductContext
 
 // Component Main ProductCard, and Provider to the children
-export function ProductCard({ children, product }: ProductCardProps) {
+export function ProductCard({
+  children,
+  product,
+  className,
+  style
+}: ProductCardProps) {
   const { counter, increaseBy } = useProduct()
 
   return (
     <Provider value={{ counter, increaseBy, product }}>
-      <div className={styles.productCard}>{children}</div>
+      <div className={`${styles.productCard} ${className}`} style={style}>
+        {children}
+      </div>
     </Provider>
   )
 }
