@@ -10,11 +10,18 @@ export interface ProductContextProps {
   increaseBy: (value: number) => void
 }
 
+export interface onChangeArgs {
+  count: number
+  product: Product
+}
+
 export interface ProductCardProps {
   product: Product
   children?: React.ReactElement | React.ReactElement[]
   className?: string
   style?: React.CSSProperties
+  value?: number
+  onChange?: (args: onChangeArgs) => void
 }
 
 export interface ProductTitleProps {
@@ -36,7 +43,7 @@ export interface ProductButtonsProps {
 
 // Props or props destructuring (is the same)
 export interface ProductCardHOCProps {
-  ({ children, product, className, style }: ProductCardProps): JSX.Element
+  (Props: ProductCardProps): JSX.Element
   Buttons: (Props: ProductButtonsProps) => JSX.Element
   Image: ({ img, className, style }: ProductImageProps) => JSX.Element
   Title: (Props: ProductTitleProps) => JSX.Element
