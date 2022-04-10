@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import { onChangeArgs, Product } from '../interfaces/interfaces'
+import { OnChangeArgs, Product } from '../interfaces/interfaces'
 
 interface ProductInCart extends Product {
   count: number
@@ -11,7 +11,7 @@ export function useShoppingCart() {
     [key: string]: ProductInCart
   }>({})
 
-  const onProductCountChange = ({ count, product }: onChangeArgs) => {
+  const onProductCountChange = ({ count, product }: OnChangeArgs) => {
     setShoppingCart((prevProd) => {
       // Delete product from mini cart (if count is 0)
       if (count === 0) {

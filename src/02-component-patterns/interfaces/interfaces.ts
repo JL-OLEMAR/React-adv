@@ -4,30 +4,47 @@ export interface Product {
   img?: string
 }
 
+// Context
 export interface ProductContextProps {
   counter: number
   product: Product
+  maxCount?: number
   increaseBy: (value: number) => void
 }
 
-export interface onChangeArgs {
+export interface InitialValues {
+  count?: number
+  maxCount?: number
+}
+
+interface ProductCardHandlers {
+  product: Product
+  count: number
+  isMaxCountReached: boolean
+  maxCount?: number
+  increaseBy: (value: number) => void
+  reset: () => void
+}
+
+export interface OnChangeArgs {
   count: number
   product: Product
 }
 
 export interface ProductCardProps {
   product: Product
-  children?: React.ReactElement | React.ReactElement[]
   className?: string
   style?: React.CSSProperties
   value?: number
-  onChange?: (args: onChangeArgs) => void
+  initialValues?: InitialValues
+  children: (args: ProductCardHandlers) => JSX.Element
+  onChange?: (args: OnChangeArgs) => void
 }
 
-export interface ProductTitleProps {
+export interface ProductButtonsProps {
   className?: string
-  title?: string
   style?: React.CSSProperties
+  maxCount?: number
 }
 
 export interface ProductImageProps {
@@ -36,8 +53,9 @@ export interface ProductImageProps {
   style?: React.CSSProperties
 }
 
-export interface ProductButtonsProps {
+export interface ProductTitleProps {
   className?: string
+  title?: string
   style?: React.CSSProperties
 }
 
